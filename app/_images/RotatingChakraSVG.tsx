@@ -10,7 +10,7 @@ const SVGComponent: React.FC = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     fill="none"
     viewBox="0 0 124 124"
-    aria-hidden="true"
+    // aria-hidden="true"
     // style={{
     //   translate: "none",
     //   rotate: "none",
@@ -24,7 +24,7 @@ const SVGComponent: React.FC = () => (
         x: { duration: 1, type: "tween" },
         rotate: { duration: 2,ease: "linear", repeat: Infinity,stiffness: 70  },
       }}
-    className="text-9xl font-bold inline-block"
+    className="w-12 font-bold inline-block"
   >
     <path
       fill="#fff"
