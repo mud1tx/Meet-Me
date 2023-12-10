@@ -10,21 +10,13 @@ const SVGComponent: React.FC = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     fill="none"
     viewBox="0 0 124 124"
-    // aria-hidden="true"
-    // style={{
-    //   translate: "none",
-    //   rotate: "none",
-    //   scale: "none",
-    //   transform: "translate3d(0px, 0px, 0px) rotate(32.3543deg)",
-    // }}
     initial={{opacity:0, x: "-20vw" }}
     animate={{opacity:1, x: 0 ,rotate:[0,360]}}
-    // transition={{ duration: 3, type: "spring", stiffness: 30 }}
     transition={{
         x: { duration: 1, type: "tween" },
         rotate: { duration: 2,ease: "linear", repeat: Infinity,stiffness: 70  },
       }}
-    className="w-12 font-bold inline-block"
+    className="min-w-[48px] font-bold inline-block relative top-4"
   >
     <path
       fill="#fff"
