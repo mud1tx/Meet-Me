@@ -8,8 +8,8 @@ const dashboard: React.FC = () => {
   type left = boolean;
 
   return (
-    <div style={{ height: "calc(100vh - 120px)" }}>
-      <div className="w-screen py-[17vh] min-[425px]:py-[12vh] lg:py-0 max-w-[1920px] 2xl:m-auto">
+    <div style={{ height: "calc(100vh - 110px)" }}>
+      <div className="py-[17vh] min-[425px]:py-[12vh] lg:py-0 max-w-[1920px] 2xl:m-auto">
         <LeftHomePage />
         <motion.div
           className="flex justify-center h-full gap-8 flex-col w-full md:px-12 lg:px-16 xl:px-20 2xl:px-24 px-6"
