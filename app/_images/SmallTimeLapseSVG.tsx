@@ -11,7 +11,7 @@ const SVGComponent = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     className="timer"
     aria-hidden="true"
-  >
+  > 
     <path
       fillRule="evenodd"
       clipRule="evenodd"

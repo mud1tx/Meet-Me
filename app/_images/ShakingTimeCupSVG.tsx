@@ -22,9 +22,9 @@ const ShakingTimeCupSVG: React.FC = () => {
     }
   };
 
-  // useEffect(() => {
-  //   rotate(); // Start the animation loop
-  // }, []);
+  useEffect(() => {
+    rotate(); // Start the animation loop
+  }, []);
 
   return (
     <motion.svg
@@ -35,7 +35,8 @@ const ShakingTimeCupSVG: React.FC = () => {
       aria-hidden="true"
       initial={false}
       animate={controls}
-      style={{ touchAction: "none" }}
+      style={{ display: 'inline-block', verticalAlign: 'middle' }}
+      // style={{ touchAction: "none" }}
       // style={{ verticalAlign: "middle" }}
       className="w-12 font-bold inline-block"
     >
