@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import RotatingFlowerSVG from "../_images/RotatingFlowerSVG";
-import RotatingChakraSVG from "../_images/RotatingChakraSVG";
-import ThunderSVG from "../_images/ThunderSVG";
-import ShakingTimeCupSVG from "../_images/ShakingTimeCupSVG";
-import FourLeafFlowerSVG from "../_images/FourLeafFlowerSVG";
+import RotatingChakra from "../../public/RotatingChakra.svg";
+import Image from "next/image";
+import FourLeafFlowerSVG from "../../public/FourLeafFlower.svg";
+import SandGlass from "../../public/SandGlass.svg";
+import Thunder from "../../public/Thunder.svg";
 
 const HomePage: React.FC = () => {
   const [showSVG, setShowSVG] = useState(true);
@@ -59,9 +60,44 @@ const HomePage: React.FC = () => {
     },
   };
 
+  const controls = useAnimation();
+
+  const rotateLeft = {
+    rotate: -20,
+    transition: { duration: 0.5, ease: "easeInOut" },
+  };
+
+  const rotateRight = {
+    rotate: 20,
+    transition: { duration: 0.5, ease: "easeInOut" },
+  };
+
+  const initialOpacityAnimation = {
+    opacity: 1,
+    transition: { duration: 2, ease: "easeInOut" },
+  };
+
+  useEffect(() => {
+    const runAnimation = async () => {
+      await controls.start(initialOpacityAnimation);
+      while (true) {
+        await controls.start(rotateRight);
+        await controls.start(rotateLeft);
+      }
+    };
+
+    runAnimation();
+
+    return () => controls.stop();
+  }, [controls]);
+
+  const handleAnimationCompleteChakra = () => {
+    document.getElementById("chakra")?.remove();
+  };
+
   return (
-    <div className="flex justify-center h-full flex-col w-full md:px-12 lg:px-16 xl:px-20 2xl:px-24 px-6">
-      <div className="w-full flex justify-center">
+    <div className="flex justify-center h-full flex-col md:px-12 lg:px-16 xl:px-20 2xl:px-24 px-6">
+      <div className="flex justify-center items-baseline">
         <div>
           <motion.span
             initial={{ x: "-100vw" }}
@@ -84,7 +120,24 @@ const HomePage: React.FC = () => {
           <RotatingFlowerSVG />
         </div>
         {showSVG ? (
-          <RotatingChakraSVG />
+          <motion.span
+            className="inline-block"
+            initial={{ opacity: 0, x: "-20vw" }}
+            animate={{ opacity: 1, x: 0, rotate: [0, 360] }}
+            transition={{
+              x: { duration: 1, type: "tween" },
+              rotate: {
+                duration: 2,
+                ease: "linear",
+                repeat: Infinity,
+                stiffness: 70,
+              },
+            }}
+            id="chakra"
+            onAnimationComplete={handleAnimationCompleteChakra}
+          >
+            <Image src={RotatingChakra} alt="Your Alt Text" className="w-12" />
+          </motion.span>
         ) : (
           <motion.span
             variants={eVariants}
@@ -150,7 +203,7 @@ const HomePage: React.FC = () => {
           </motion.div>
         )}
       </div>
-      <div className="w-full flex justify-cente overflow-hidden">
+      <div className="flex justify-center items-baseline">
         <motion.span
           initial={{ opacity: 0, scaleY: 0, originY: 1 }}
           animate={{ opacity: 1, scaleY: 1, originY: 0 }}
@@ -159,10 +212,13 @@ const HomePage: React.FC = () => {
         >
           V
         </motion.span>
-        {/* <span className="inline-block relative top-11 min-[450px]:top-12"> */}
-        <span className="inline-block">
-          <ShakingTimeCupSVG />
-        </span>
+        <motion.span
+          className="inline-block"
+          initial={{ opacity: 0 }}
+          animate={controls}
+        >
+          <Image src={SandGlass} alt="Your Alt Text" className="w-12" />
+        </motion.span>
         <motion.span
           variants={animationVariants}
           initial="hidden"
@@ -172,11 +228,19 @@ const HomePage: React.FC = () => {
           s
         </motion.span>
         {showSVG ? (
-          <span className="inline-block">
-            <ThunderSVG />
-          </span>
-        ) : (
           <motion.span
+            className="inline-block"
+            initial={{ scale: 1, opacity: 0 }}
+            animate={{
+              opacity: 1,
+              scale: [1, 0.9, 1.1, 1],
+              transition: { repeat: Infinity, duration: 1 },
+            }}
+          >
+            <Image src={Thunder} alt="Your Alt Text" className="w-12" />
+          </motion.span>
+        ) : (
+          <motion.div
             variants={eVariants}
             initial="hidden"
             animate="visible"
@@ -184,11 +248,17 @@ const HomePage: React.FC = () => {
             className="text-[5.2rem] min-[425px]:text-[88.66px] sm:text-[118px] min-[500px]:text-[99px] md:text-[134.4px] lg:text-[168.5px] xl:text-[202.6px] min-[1440px]:text-[224px] 2xl:text-[236.8px] font-bold inline-block"
           >
             t
-          </motion.span>
+          </motion.div>
         )}
-        <span className="inline-block h-[125px]">
-          <FourLeafFlowerSVG />
-        </span>
+        <motion.span
+          className="inline-block"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+          whileHover={{ rotate: 1080 }}
+        >
+          <Image src={FourLeafFlowerSVG} alt="Your Alt Text" className="w-12" />
+        </motion.span>
       </div>
     </div>
   );
