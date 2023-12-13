@@ -8,16 +8,17 @@ const dashboard: React.FC = () => {
   type left = boolean;
 
   return (
-    <div style={{ height: "calc(100vh - 110px)" }}>
-      <div className="py-[17vh] min-[425px]:py-[12vh] lg:py-0 max-w-[1920px] 2xl:m-auto">
+    <>
+    <div style={{ height: "calc(100vh - 110px)"}}>
+      <div className="py-[17vh] min-[425px]:py-[12vh] lg:py-[8vh] xl:py-[4vh] 2xl:py-[2vh]  max-w-[1920px] 2xl:m-auto">
         <LeftHomePage />
         <motion.div
-          className="flex justify-center h-full gap-8 flex-col w-full md:px-12 lg:px-16 xl:px-20 2xl:px-24 px-6"
+          className="flex justify-center h-full gap-8 flex-col w-full md:flex-row md:justify-between md:px-12 lg:px-16 xl:px-20 2xl:px-24 px-6 items-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2, ease: "easeIn" }}
-        >
-          <div className="flex gap-3 items-center justify-around">
+          >
+          <div className="flex gap-3 items-center justify-around max-w-sm min-[425px]:max-w-mid w-auto">
             <BracketSVG left={true} />
             <div>
               <p className="flex justify-center items-center">
@@ -26,7 +27,7 @@ const dashboard: React.FC = () => {
             </div>
             <BracketSVG left={false} />
           </div>
-          <div className="">
+          <div className="w-full max-w-sm min-[425px]:max-w-mid">
             <button className="w-full h-16 rounded-full border-4 border-['#fffce1']">
               Start a call
             </button>
@@ -34,6 +35,8 @@ const dashboard: React.FC = () => {
         </motion.div>
       </div>
     </div>
+      <div className="border-b-2 border-solid border-[#42433d] py-2"></div>
+          </>
   );
 };
 

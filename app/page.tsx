@@ -1,14 +1,14 @@
-"use client"
+"use client";
 import React from "react";
-import Dashboard from "./_components/Dashboard"
+import Dashboard from "./_components/Dashboard";
 import Navbar from "./_components/Navbar";
 
 const Home: React.FC = () => {
   return (
-    <>
-    <Navbar />
-    <Dashboard/>
-    </>
+    <div className="max-w-[1824px] m-auto">
+      <Navbar />
+      <Dashboard />
+    </div>
   );
 };
 
